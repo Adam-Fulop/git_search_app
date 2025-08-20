@@ -46,7 +46,9 @@ class _SearchPageState extends State<SearchPage> {
   void _navigateToDetail(BuildContext context, Repository repository) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => RepositoryDetailPage()),
+      MaterialPageRoute(
+        builder: (context) => RepositoryDetailPage(repository: repository),
+      ),
     );
   }
 
