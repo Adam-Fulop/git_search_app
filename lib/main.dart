@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:git_search_app/features/github_search/data/datasources/github_remote_data_source.dart';
+import 'package:git_search_app/features/github_search/data/repositories/github_repository_impl.dart';
+import 'package:git_search_app/features/github_search/domain/usecases/search_repositories.dart';
+import 'package:git_search_app/features/github_search/presentation/bloc/github_search_bloc.dart';
 import 'package:git_search_app/features/github_search/presentation/pages/search_page.dart';
+import 'package:http/http.dart' as http;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,7 +59,18 @@ class MyApp extends StatelessWidget {
 
       themeMode: ThemeMode.system,
 
-      home: SearchPage(),
+      home: BlocProvider(
+        create: (context) => GithubSearchBloc(
+          searchRepositories: SearchRepositories(
+            GithubRepositoryImpl(
+              remoteDataSource: GithubRemoteDataSourceImpl(
+                client: http.Client(),
+              ),
+            ),
+          ),
+        ),
+        child: const SearchPage(),
+      ),
     );
   }
 }
