@@ -1,16 +1,18 @@
-# git_search_app
+# GitHub search application
 
-A new Flutter project.
+Mobile app for searching GitHub repositories.
 
-## Getting Started
+## About this project
 
-This project is a starting point for a Flutter application.
+The application is built on the GitHub Search API. Based on the search criteria specified in the search field, it lists the first 30 relevant results, depending on the sorting criteria.
+From the results list, a detailed page about the repository can then be displayed with additional information:
+- owner name, avatar and link to GitHub profile
+- project name
+- description + GitHub repository link
+- number of forks
+- creation time
+- last update time
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Examples of searches:
+- <code>highway language:Dart created:>2025-01-17</code>
+- <code>language:Dart state:open sort:stars-desc</code>
